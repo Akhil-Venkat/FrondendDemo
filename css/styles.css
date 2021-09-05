@@ -5,22 +5,22 @@
   --color-headings: #1b0760;
   --color-body: #918ca4;
   --color-body-darker: #5c5577;
-  --color-border: 1px solid #ccc;
+  --color-border: #ccc;
   --border-radius: 30px;
 }
 
-/* Universal selector (*), by default this will  not apply to pseudo elemets, so explictly 
-      mention. Dont use it offten since it has some perfomance implications*/
-*, *::after, *::before {
+*,
+*::after,
+*::before {
   box-sizing: border-box;
 }
 
+/* Typography */
+
 html {
-  /* 62.5% of medium size text in chrome (16 px) = 10px */
+  /* 62.5% of 16px = 10px */
   font-size: 62.5%;
 }
-
-/* Typography component */
 
 body {
   font-family: Inter, Arial, Helvetica, sans-serif;
@@ -71,16 +71,15 @@ p {
 }
 
 /* Links */
-
 a {
   text-decoration: none;
 }
 
 .link-arrow {
   color: var(--color-accent);
+  text-transform: uppercase;
   font-size: 2rem;
   font-weight: bold;
-  text-transform: uppercase;
 }
 
 .link-arrow::after {
@@ -98,8 +97,8 @@ a {
     font-size: 1.5rem;
   }
 }
-
 /* Badges */
+
 .badge {
   border-radius: 20px;
   font-size: 2rem;
@@ -109,20 +108,21 @@ a {
 }
 
 .badge--primary {
-  background-color: var(--color-primary);
+  background: var(--color-primary);
   color: #fff;
 }
 
 .badge--secondary {
-  background-color: var(--color-secondary);
+  background: var(--color-secondary);
   color: #fff;
 }
 
 .badge--small {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
+  padding: 0.5rem 1.5rem;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (min-width: 1024px) {
   .badge {
     font-size: 1.5rem;
   }
@@ -131,12 +131,10 @@ a {
     font-size: 1.2rem;
   }
 }
-
-/* List */
-
+/* Lists */
 .list {
   list-style: none;
-  margin-left: 0;
+  padding-left: 0;
   color: var(--color-headings);
 }
 
@@ -151,25 +149,32 @@ a {
 }
 
 .list--tick .list__item {
-  margin-bottom: 1rem;
   padding-left: 0.5rem;
+  margin-bottom: 1rem;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (min-width: 1024px) {
   .list--tick .list__item {
     padding-left: 0;
   }
-
-/* Icons */
-
 }
+/* Icons */
 .icon {
   width: 40px;
   height: 40px;
 }
 
+.icon--small {
+  width: 30px;
+  height: 30px;
+}
+
 .icon--primary {
   fill: var(--color-primary);
+}
+
+.icon--white {
+  fill: #fff;
 }
 
 .icon-container {
@@ -177,7 +182,7 @@ a {
   width: 64px;
   height: 64px;
   border-radius: 100%;
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
 }
@@ -187,7 +192,6 @@ a {
 }
 
 /* Buttons */
-
 .btn {
   border-radius: 40px;
   border: 0;
@@ -216,8 +220,7 @@ a {
 }
 
 .btn--secondary:hover {
-  /* My best approach is to use CSS  pre-processor like SASS  lighten(--primary-color, 10%) */
-  background: #05cdf0;  
+  background: #05cdf0;
 }
 
 .btn--accent {
@@ -251,13 +254,12 @@ a {
   }
 }
 
-/* Input */
-
+/* Inputs */
 .input {
   border-radius: var(--border-radius);
-  border: var(--color-border);
+  border: 1px solid var(--color-border);
   color: var(--color-headings);
-  font-size: 3.5rem;
+  font-size: 2rem;
   outline: 0;
   padding: 1.5rem 3.5rem;
 }
@@ -267,7 +269,7 @@ a {
 }
 
 .input-group {
-  border: var(--color-border);
+  border: 1px solid var(--color-border);
   border-radius: var(--border-radius);
   display: flex;
 }
@@ -287,16 +289,14 @@ a {
     font-size: 1.5rem;
   }
 }
-
 /* Cards */
-
 .card {
   border-radius: 7px;
   box-shadow: 0 0 20px 10px #f3f3f3;
   overflow: hidden;
 }
 
-.card__header, 
+.card__header,
 .card__body {
   padding: 2rem 3rem;
 }
@@ -311,8 +311,11 @@ a {
   color: #fff;
 }
 
-/* Plans */
+.card--secondary .badge--secondary {
+  background: #02cdf1;
+}
 
+/* Plans */
 .plan__name {
   color: #fff;
   margin: 0;
@@ -372,9 +375,7 @@ a {
     font-size: 1.7rem;
   }
 }
-
 /* Media */
-
 .media {
   display: flex;
 }
@@ -390,9 +391,7 @@ a {
 .media__image {
   margin-top: 1rem;
 }
-
 /* Quotes */
-
 .quote {
   font-size: 3rem;
   font-style: italic;
@@ -439,12 +438,58 @@ a {
   .quote__organization {
     font-size: 1.6rem;
   }
-  
 }
 
+/* Grids */
+.grid {
+  display: grid;
+}
 
+@media screen and (min-width: 768px) {
+  .grid--1x2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
+@media screen and (min-width: 1024px) {
+  .grid--1x3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 
+/* Testimonials */
+.testimonial {
+  padding: 3rem;
+}
 
+.testimonial__image {
+  position: relative;
+  margin: 0 3rem;
+}
 
+.testimonial__image > img {
+  width: 100%;
+}
+
+.testimonial__image > .icon-container {
+  position: absolute;
+  top: 3rem;
+  right: -32px;
+}
+
+@media screen and (min-width: 768px) {
+  .testimonial__image {
+    margin: 0;
+  }
+
+  .testimonial .quote,
+  .testimonial .quote__author {
+    font-size: 2.4rem;
+  }
+
+  .testimonial .quote {
+    margin-left: 6rem;
+    margin-right: 0;
+  }
+}
 
