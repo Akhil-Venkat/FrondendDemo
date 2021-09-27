@@ -34,6 +34,7 @@ h2,
 h3 {
   color: var(--color-headings);
   margin-bottom: 1rem;
+  line-height: 1.1;
 }
 
 h1 {
@@ -199,10 +200,18 @@ a {
   font-size: 1.8rem;
   font-weight: 600;
   margin: 1rem 0;
+  outline: 0;
   padding: 2rem 3rem;
   text-align: center;
   text-transform: uppercase;
   white-space: nowrap;
+}
+
+.btn .icon {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 1rem;
+  vertical-align: middle;
 }
 
 .btn--primary {
@@ -282,7 +291,7 @@ a {
 .input-group .input {
   border: 0;
   flex-grow: 1;
-  padding: 1.5rem 1rem;
+  padding: 1.5rem 2rem;
 }
 
 .input-group .btn {
@@ -540,7 +549,6 @@ a {
 }
 
 /* Collapsibles */
-
 .collapsible__header {
   display: flex;
   justify-content: space-between;
@@ -558,8 +566,8 @@ a {
 
 .collapsible__content {
   max-height: 0;
-  opacity: 0;
   overflow: hidden;
+  opacity: 0;
   transition: all 0.3s;
 }
 
@@ -571,13 +579,8 @@ a {
   max-height: 100vh;
   opacity: 1;
 }
-
 /* Blocks */
-
 .block {
-  /* 
-      Defining the component constants
-  */
   --padding-vertical: 6rem;
   padding: var(--padding-vertical) 2rem;
 }
@@ -619,9 +622,9 @@ a {
   background: #000;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   flex-wrap: wrap;
   padding: 0 1rem;
+  align-items: center;
 }
 
 .nav__list {
@@ -645,7 +648,7 @@ a {
 
 .nav__toggler {
   opacity: 0.5;
-  transition: box-shadow 0.2s;
+  transition: box-shadow 0.15s;
   cursor: pointer;
 }
 
@@ -664,20 +667,20 @@ a {
     display: none;
   }
 
-  .nav__item {
-    border: 0;
-  }
-
   .nav__list {
     width: auto;
     display: flex;
-  font-size: 1.6rem;  
-  max-height: 100%;
-  opacity: 1;
+    font-size: 1.6rem;
+    max-height: 100%;
+    opacity: 1;
+  }
+
+  .nav__item {
+    border: 0;
+  }
 }
 
-/* Hero  */
-
+/* Hero */
 .hero {
   clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 0% 100%);
 }
@@ -703,4 +706,34 @@ a {
     align-self: center;
   }
 }
+
+/* Domain Block */
+.block-domain .input-group {
+  box-shadow: 0 0 30px 20px #e6ebee;
+  border: 0;
+  margin: 4rem auto;
+  max-width: 670px;
 }
+
+.block-domain__prices {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(5, 6rem);
+  font-size: 2rem;
+  font-weight: 600;
+  justify-items: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 768px) {
+  .block-domain__prices {
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  }
+}
+
+
+
+
+
+
